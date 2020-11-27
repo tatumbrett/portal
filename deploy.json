@@ -1,3 +1,4 @@
+
 AWSTemplateFormatVersion: '2010-09-09'
 Description: WorkSpaces Portal Foundational Services and Pipeline
 Parameters:
@@ -77,7 +78,7 @@ Resources:
           Resource:
             - Fn::Sub: "arn:aws:s3:::${S3Bucket}/*"
           Principal: 
-            AWS: "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ECDXZRN4DR93K"
+            AWS: arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ECDXZRN4DR93K
 
   CodeBuildTrustRole:
     Description: Creating service role in IAM for AWS CodeBuild
@@ -186,7 +187,7 @@ Resources:
           - iam:DeleteRolePolicy
           - iam:UpdateAssumeRolePolicy
           Resource:
-            Fn::Sub: arn:aws:iam::${AWS::AccountId}:role/*
+            Fn::Sub: "arn:aws:iam::${AWS::AccountId}:role/*"
           Effect: Allow
         - Action:
           - states:*
