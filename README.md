@@ -1,7 +1,5 @@
 # WorkSpaces Portal
 
-**Note: This repository is no longer maintained.**
-
 The WorkSpaces Portal provides Self-Service capability to end-users for Amazon WorkSpaces virtual desktops. The portal provides the ability for users to create, rebuild, reboot, and delete their WorkSpace. The application is entirely serverless leveraging AWS Lambda, S3, API Gateway, Step Functions, Cognito, and SES. The application provides continuous deployment through AWS CodePipeline, CodeBuild, CloudFormation with SAM, and GitHub.
 
 ## Architecture
@@ -27,44 +25,6 @@ This project leverages the following services:
 * [Code Build](https://aws.amazon.com/codebuild/): Used to build the project as part of CodePipeline process. 
 * [GitHub](http://www.github.com): Used as the source code repository. Could theoretically be replaced with CodeCommit.
 * [Jekyll](http://www.jekyllrb.com): Provides static web site generation to convert the `website/` directory.
-
-## Usage
-
-### User Account Creation
-
-Users can create their accounts through the register page. Anyone with an email on the Approved Domain as specified in the stack can register. 
-
-![Register Page](docs/screenshots/Example_register.png)
-
-After registering, users will receive a verification token through email. The user must enter this token on the verification page. Users are automatically redirected to the verify page after registering; however, they can also access it by accessing the site and browsing the verify from the top-right dropdown.
-
-![Verify Page](docs/screenshots/Example_verify.png)
-
-Once verified, the user can sign in to the portal with their created credentials. 
-
-### Creating a WorkSpace
-
-Upon signing in, they will see the WorkSpace Request form as they have not created a WorkSpace yet. They can submit a request which will start the Approval process.
-
-![Request WorkSpace](docs/screenshots/Example_request.png)
-
-The Approver email as specified within the stack will receive an email with links to Approve or Reject the request.
-
-Upon signing in, they will see the WorkSpace Request form as they have not created a WorkSpace yet.
-
-![WorkSpace Approval](docs/screenshots/Example_approval.png)
-
-Once approved, the WorkSpace will begin automatically and immediately.
-
-### Managing a WorkSpace
-
-After the WorkSpace is provisioned, the user will receive an email directly from Amazon with details on how to access their WorkSpace.
-
-![WorkSpace Access](docs/screenshots/Example_access.png)
-
-They can also begin managing the WorkSpace through the portal: rebuild, reboot, or delete.
-
-![WorkSpace Operations](docs/screenshots/Example_details.png)
 
 ## Deployment
 
@@ -233,19 +193,3 @@ The code for the pipeline resides within the root of the project, and the pipeli
 
 1. If you want to delete the stack, make sure to delete the pipeline-created stack first and then delete the parent stack. If you delete the parent first, the IAM role is deleted and you'll have to tinker around with permissions to get the stack to actually gracefully delete.
 2. Some of the IAM permissions may be more liberal than preferred. Please review and edit to match to your security policies as appropriate.
-
-## Authors
-
-* **Earl Gay** - *Initial work* - [eeg3](https://github.com/eeg3)
-
-See also the list of [contributors](https://github.com/eeg3/workspaces-portal/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the [2-Clause BSD License](https://opensource.org/licenses/BSD-2-Clause).
-
-## Acknowledgments
-
-* [AWS Labs: Severless Web Application WorkShop](https://github.com/awslabs/aws-serverless-workshops/tree/master/WebApplication/)
-* [AWS Labs: Serverless SAM Farm](https://github.com/awslabs/aws-serverless-samfarm)
-* [AWS Compute Blog: Implementing Serverless Manual Approval Steps in AWS Step Functions and Amazon API Gateway](https://aws.amazon.com/blogs/compute/implementing-serverless-manual-approval-steps-in-aws-step-functions-and-amazon-api-gateway/)
