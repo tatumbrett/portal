@@ -6,7 +6,7 @@ The WorkSpaces Portal provides Self-Service capability to end-users for Amazon W
 
 ## Architecture
 
-![Architectural Diagram](docs/diagram.png)
+![Architectural Diagram](docs/2diagram.png)
 
 ### Components Overview
 
